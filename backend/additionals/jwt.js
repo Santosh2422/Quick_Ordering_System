@@ -11,8 +11,8 @@ export const generateToken = (userId, role, restaurantId, res) => {
     res.cookie("accessToken", accessToken, {
         maxAge: 15 * 60 * 1000,
         httpOnly: true,
-        sameSite: isProduction ? "strict" : "lax", // 'lax' is better for local dev
-        secure: isProduction, // Only secure in true production
+        sameSite: isProduction ? "none" : "lax",
+        secure: isProduction,
         path: "/"
     });
 
@@ -23,9 +23,9 @@ export const generateToken = (userId, role, restaurantId, res) => {
     res.cookie("refreshToken", refreshToken, {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: isProduction ? "strict" : "lax",
-        secure: isProduction, // Only secure in true production
-        path: "/" // Slightly broader path to prevent matching errors
+        sameSite: isProduction ? "none" : "lax",
+        secure: isProduction,
+        path: "/"
     });
 
     return accessToken;
