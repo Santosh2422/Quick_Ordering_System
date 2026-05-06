@@ -184,7 +184,7 @@ export const logout = (req, res) => {
         const cookieOptions = {
             maxAge: 0,
             httpOnly: true,
-            sameSite: isProduction ? "strict" : "lax", // MUST MATCH jwt.js
+            sameSite: isProduction ? "none" : "lax",, // MUST MATCH jwt.js
             secure: isProduction,                     // MUST MATCH jwt.js
             path: "/"                                 // MUST MATCH jwt.js
         };
